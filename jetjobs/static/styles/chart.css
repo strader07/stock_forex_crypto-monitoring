@@ -1,0 +1,15 @@
+.mchart {
+    width: 110%;
+    box-sizing: border-box;
+    padding: 5px;
+    /* margin: 20px; */
+}
+
+@media only screen and (min-width: 600px) {
+      .mchart {
+        width: 90%;
+        margin: 15px;
+    }
+}
+
+

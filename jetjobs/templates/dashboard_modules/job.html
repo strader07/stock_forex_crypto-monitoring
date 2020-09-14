@@ -1,0 +1,96 @@
+<style type="text/css">
+    .btn-outline-info {
+        color: #17a2b8;
+        cursor: pointer;
+    }
+
+    .btn {
+        display: inline-block;
+        /*font-weight: 400;*/
+        /*color: #212529;*/
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-color: #17a2b8;
+        padding: .375rem .75rem;
+        /*font-size: 1rem;*/
+        /*line-height: 1.5;*/
+        border-radius: .25rem;
+        transition: color .15s ease-in-out background-color .15s ease-in-out border-color .15s ease-in-out box-shadow .15s ease-in-out;
+    }
+</style>
+{% if module.children %}
+    {% if module.layout == "stacked" %}
+        <ul>
+            {% for job in module.children %}
+                <li>
+                    <span class="nowrap">{{ job.title }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% elif module.layout == "inline" %}
+    <form method="POST" action="/admin/startmonitor/">
+        {% for job in module.children %}
+        <div class="padding">
+            <ul>
+                <li style="float: right;">
+                    <span class="nowrap"><a href="">Job Title:</a><input type="text" name="title" value="{{ job.title }}" size="9" style="outline: none; border: none;" readonly></span>
+                </li>
+                <li>
+                    <span class="nowrap">
+                        <a href="">Symbol:</a>&nbsp;&nbsp;
+                        <input type="text" name="symbol" value="{{ job.symbol }}" size="5" style="outline: none; border: none;" readonly>
+                    </span>
+                </li>
+                <li>
+                    <span class="nowrap">
+                        <a href="">Interval:</a>&nbsp;&nbsp;
+                        <input type="text" name="interval" value="{{ job.interval }}" size="5" style="outline: none; border: none;" readonly>
+                        <a href="">RSI period:</a>&nbsp;&nbsp;
+                        <input type="text" name="rsi_period" value="{{ job.rsi_period }}" size="5" style="outline: none; border: none;" readonly>
+                        <a href="">RSI value:</a>&nbsp;&nbsp;
+                        <input type="text" name="rsi_value" value="{{ job.rsi_value }}" size="5" style="outline: none; border: none;" readonly>
+                    </span>
+                    <span class="nowrap">
+                        <a href="">BB period:</a>&nbsp;&nbsp;
+                        <input type="text" name="bb_period" value="{{ job.bb_period }}" size="5" style="outline: none; border: none;" readonly>
+                        <a href="">BB option:</a>&nbsp;&nbsp;
+                        <input type="text" name="bb_option" value="{{ job.bb_option }}" size="7" style="outline: none; border: none;" readonly>
+                        <!-- <a href="">BB lowerband:</a>&nbsp;&nbsp;
+                        <input type="text" name="bb_lowerband" value="{{ job.bb_lowerband }}" size="5" style="outline: none; border: none;" readonly> -->
+                        <a href="">BB std:</a>&nbsp;&nbsp;
+                        <input type="text" name="bb_std" value="{{ job.bb_std }}" size="5" style="outline: none; border: none;" readonly>
+                    </span>
+                </li>
+            </ul> 
+        </div>
+        {% endfor %}
+        <div class="padding">
+            <div class="form-group" style="float: left; padding-bottom: 10px;">
+                <button class="btn btn-outline-info" type="submit">Start mornitoring!</button>
+            </div>
+            </form>
+            <form method="GET" action="/admin/stopmonitor/">
+            <div class="form-group" style="float: left; padding-left: 20px; padding-bottom: 10px;">
+                <button class="btn btn-outline-info" type="submit">Stop monitoring!</button>
+            </div>
+            </form>
+            <form method="GET" action="/admin/viewmonitor/" target="_blank">
+            <div class="form-group" style="float: right; padding-bottom: 10px;">
+                <button class="btn btn-outline-info" type="submit">View result</button>
+            </div>
+            </form>
+        </div>
+    {% endif %}
+{% else %}
+    <ul>
+        <li>
+            Nothing to show
+        </li>
+    </ul>
+{% endif %}

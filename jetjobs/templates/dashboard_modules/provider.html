@@ -1,0 +1,15 @@
+{% load humanize %}
+{% load staticfiles %}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" charset="UTF-8">
+
+
+    var jobs = ['Job Def']
+    {% for job in module.children %}
+    jobs.push("{{ Job.name }}");
+
+    {% endfor %}
+    console.log(jobs);
+
+</script>

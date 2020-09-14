@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'styles/chart.css' %}">
+<link rel="stylesheet" href="{% static 'styles/jobs.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<style>
+    body {
+        font-family: "Fira Sans", sans-serif;
+    }
+</style>
+
+{% endblock %}
+{% block footer %}
+{{ block.super }}
+
+<script type="text/javascript" src="{% static 'scripts/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript">
+
+</script>
+<script type="text/javascript" src="{% static 'scripts/jquery/jquery.throttledresize.js' %}"></script>
+{% endblock  %}
